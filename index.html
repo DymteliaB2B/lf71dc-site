@@ -97,6 +97,8 @@ a { color: inherit; }
 .intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 .intro p { margin: 0 0 1em; max-width: 60ch; font-size: 1.08rem; color: #2c3040; }
 .intro p.lead { font-size: 1.35rem; line-height: 1.45; color: var(--navy); font-weight: 500; text-wrap: balance; }
+.intro p.dedic { border-left: 4px solid var(--red); padding: 4px 0 4px 16px; color: var(--navy); font-weight: 500; }
+.intro p.dedic .mono { display: block; color: var(--red); margin-bottom: 4px; font-weight: 600; }
 
 .specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid var(--navy); }
 .specs div { padding: 14px 0 12px; border-bottom: 1px solid #1b1f2c26; display: flex; flex-direction: column; gap: 2px; }
@@ -216,7 +218,7 @@ footer .mono { display: block; margin-bottom: 8px; }
         <div class="reg">
           <span class="status mono">Disponible · v0.9.2</span>
           <div class="kin" style="margin-top:16px">F-PIIM</div>
-          <span class="mono">Jodel D112 n°749 · Aéro-club du Bassin Minier</span>
+          <span class="mono">Jodel D112 n°749 · Aéro-club du Bassin Minier (ACBM)</span>
         </div>
       </div>
 
@@ -228,6 +230,7 @@ footer .mono { display: block; margin-bottom: 8px; }
       <div class="intro">
         <div>
           <p class="lead">Le biplace de voyage de Jean Délémontez et Édouard Joly, tel que vole le F-PIIM, restauré en 2020 par les membres de l'Aéro-club du Bassin Minier.</p>
+          <p class="dedic"><span class="mono">Pour les adhérents de l'ACBM</span>Ce modèle est avant tout dédié aux adhérents de l'Aéro-club du Bassin Minier : retrouver dans X-Plane l'avion du club, sa planche de bord et ses procédures, entre deux vols.</p>
           <p>Le modèle 3D d'Emmanuel Baranger (helijah) a été converti pour X-Plane 11, puis repris pièce par pièce d'après les photos de l'avion : livrée, cadres de verrière, planche de bord, portes, compte-tours calé sur sa ligne rouge à 2300 tr/min.</p>
           <p>Le modèle de vol suit les cotes Jodel officielles et la fiche de l'appareil : masses, puissance, consommation et vitesses limites.</p>
         </div>
