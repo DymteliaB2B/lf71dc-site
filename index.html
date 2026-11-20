@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="LF71DC : avions pour X-Plane 11 modelises d'apres les vrais appareils. Premier sorti du hangar : le Jodel D112 F-PIIM, a telecharger gratuitement.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lf71dc.online/">
+<meta property="og:title" content="LF71DC - Jodel D112 F-PIIM pour X-Plane 11">
+<meta property="og:description" content="LF71DC : avions pour X-Plane 11 modelises d'apres les vrais appareils. Premier sorti du hangar : le Jodel D112 F-PIIM, a telecharger gratuitement.">
+<meta property="og:image" content="https://lf71dc.online/media/ensemble.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://lf71dc.online/">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}</style>
+<title>LF71DC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Mise en page : la page porte la livree du F-PIIM. Nuit de hangar (noir) pour les titres cinetiques et les images,
+   bandes "fuselage" blanc casse avec lettres bleu nuit et filet rouge pour les fiches, comme sur l'avion. */
+:root {
+  --night: #0d0c0c;        /* hangar de nuit */
+  --night-2: #171515;
+  --hull: #ece8e1;         /* fuselage blanc casse */
+  --hull-2: #dcd6cc;
+  --navy: #1b1f2c;         /* lettres d'immatriculation */
+  --red: #c8202e;          /* capot et filet du F-PIIM */
+  --red-hot: #e2343f;
+  --blue: #2c4a96;         /* bleu de France, pour le liseré tricolore */
+  --blue-hot: #6f90de;
+  --red-deep: #8f1622;
+  --tri: linear-gradient(90deg, var(--blue) 0 33.34%, var(--hull) 33.34% 66.67%, var(--red) 66.67% 100%);
+  --steel: #8e8a84;
+  --f-kin: "Anybody", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-text: "Instrument Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --f-mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--night); color: var(--hull); font: 400 1rem/1.6 var(--f-text); overflow-x: clip; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--blue-hot); outline-offset: 3px; }
+::selection { background: var(--blue); color: var(--hull); }
+.wrap { padding-left: var(--gutter-l); padding-right: var(--gutter-r); max-width: 1320px; margin: 0 auto; }
+.mono { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.kin { font-family: var(--f-kin); font-variation-settings: "wdth" 100, "wght" 800; line-height: .82; margin: 0; letter-spacing: -.01em; }
+.kin span { display: inline-block; font-variation-settings: inherit; }
+
+/* ------------------------------------------------ en-tete */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.top nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.top a { text-decoration: none; color: var(--steel); }
+.top a:hover { color: var(--hull); text-decoration: underline; text-decoration-color: var(--blue-hot); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.brand { font-family: var(--f-kin); font-variation-settings: "wdth" 130, "wght" 800; font-size: 1.05rem; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 10px; }
+.brand .flag { width: 21px; height: 3px; background: var(--tri); border-radius: 1px; }
+
+/* ------------------------------------------------ ouverture */
+.hero { padding-block: 4vh 3vh; overflow: hidden; }
+.hero .kin { font-size: clamp(4.2rem, 19vw, 17rem); white-space: nowrap; text-align: center; user-select: none; }
+.hero .kin span { transition: color .4s; }
+.hero .kin span.d { color: var(--red-hot); }
+.hero-sub { display: grid; grid-template-columns: 1fr auto; gap: 18px 32px; align-items: end; margin-top: 3vh; padding-top: 20px; position: relative; }
+.hero-sub::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--tri); opacity: .5; }
+.hero-sub p { margin: 0; max-width: 46ch; font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: #d8d3cb; text-wrap: balance; }
+.hero-sub .mono { color: var(--steel); text-align: right; line-height: 1.9; }
+.hero-sub .mono b { color: var(--hull); font-weight: 600; }
+
+/* ------------------------------------------------ bande defilante rouge */
+.band { background: var(--red); color: var(--hull); overflow: hidden; padding-block: 14px; border-top: 3px solid var(--blue); box-shadow: inset 0 2px 0 var(--hull); border-bottom: 1px solid #00000040; }
+.band-track { display: flex; width: max-content; will-change: transform; }
+.band-track span { font-family: var(--f-kin); font-variation-settings: "wdth" 120, "wght" 700; font-size: clamp(1.4rem, 3.4vw, 2.6rem); white-space: nowrap; padding-right: .6em; letter-spacing: .02em; }
+.band-track span i { font-style: normal; color: #ffffff8c; padding: 0 .4em; }
+
+/* ------------------------------------------------ fuselage (fiche du modele) */
+.hull { background: var(--hull); color: var(--navy); position: relative; }
+.hull::after { content: ""; position: absolute; left: 0; right: 0; bottom: 64px; height: 7px; background: var(--red); }
+.hull::before { content: ""; position: absolute; left: 0; right: 0; bottom: 75px; height: 3px; background: var(--blue); }
+.feature { padding-block: 72px 120px; display: grid; gap: 48px; }
+.feature-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; }
+.feature-head .kin { font-size: clamp(5.5rem, 24vw, 21rem); color: var(--navy); white-space: nowrap; }
+.feature-head .reg { text-align: right; }
+.feature-head .reg .kin { font-size: clamp(2rem, 6vw, 4.6rem); font-variation-settings: "wdth" 112, "wght" 760; letter-spacing: .01em; }
+.feature-head .reg .mono { color: #5c5a55; margin-top: 10px; display: block; }
+.status { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--hull); border-radius: 99px; padding: 5px 12px 5px 10px; }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #4fd07a; box-shadow: 0 0 0 3px #4fd07a33; }
+
+.screen { background: var(--night); border-radius: 4px; overflow: hidden; aspect-ratio: 1280 / 544; max-width: 100%; position: relative; box-shadow: 0 30px 60px -30px #1b1f2c88; }
+.screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.screen .tag { position: absolute; left: 14px; bottom: 12px; color: #ffffffb0; }
+
+.intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.intro p { margin: 0 0 1em; max-width: 60ch; font-size: 1.08rem; color: #2c3040; }
+.intro p.lead { font-size: 1.35rem; line-height: 1.45; color: var(--navy); font-weight: 500; text-wrap: balance; }
+
+.specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid var(--navy); }
+.specs div { padding: 14px 0 12px; border-bottom: 1px solid #1b1f2c26; display: flex; flex-direction: column; gap: 2px; }
+.specs div:nth-child(odd) { padding-right: 18px; }
+.specs dt { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .09em; text-transform: uppercase; color: #6a675f; }
+.specs dd { margin: 0; font-family: var(--f-kin); font-variation-settings: "wdth" 88, "wght" 640; font-size: 1.7rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.specs dd small { font-family: var(--f-text); font-size: .85rem; font-weight: 500; color: #4b4e5a; margin-left: 4px; }
+
+.points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--navy); }
+.points article { padding: 22px 22px 26px 0; border-bottom: 1px solid #1b1f2c26; }
+.points h3 { margin: 0 0 6px; font-family: var(--f-kin); font-variation-settings: "wdth" 110, "wght" 720; font-size: 1.25rem; letter-spacing: .01em; }
+.points p { margin: 0; color: #3a3e4c; max-width: 38ch; }
+
+/* ------------------------------------------------ galerie */
+.gallery { padding-block: 80px 40px; }
+.gallery-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.gallery-head .kin { font-size: clamp(2.6rem, 8vw, 6rem); font-variation-settings: "wdth" 60, "wght" 300; letter-spacing: .02em; }
+.gallery-head .mono { color: var(--steel); }
+.strip { display: grid; grid-auto-flow: column; grid-auto-columns: min(78vw, 720px); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-color: #ffffff30 transparent; }
+.strip figure { margin: 0; scroll-snap-align: start; }
+.strip img { width: 100%; aspect-ratio: 1600 / 682; object-fit: cover; display: block; border-radius: 3px; background: var(--night-2); }
+.strip figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; color: var(--steel); }
+.strip figcaption b { color: var(--hull); font-weight: 600; }
+
+/* ------------------------------------------------ telechargement */
+.download { padding-block: 90px 100px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.dl-btn { appearance: none; border: 0; background: var(--red); color: var(--hull); width: 100%; text-align: left; padding: 26px 28px 22px; border-radius: 4px; cursor: pointer; display: grid; gap: 14px; position: relative; overflow: hidden; text-decoration: none; }
+.dl-btn.soon { background: var(--night-2); color: #8e8a84; cursor: default; outline: 1px dashed #ffffff30; }
+.dl-btn.soon .kin span { font-variation-settings: "wdth" 70, "wght" 300 !important; }
+.dl-btn .kin { font-size: clamp(2.6rem, 7.6vw, 6.4rem); white-space: nowrap; }
+.dl-btn .kin span { transition: font-variation-settings .45s cubic-bezier(.2, .8, .2, 1); font-variation-settings: "wdth" 70, "wght" 760; }
+.dl-btn:hover .kin span, .dl-btn:focus-visible .kin span { font-variation-settings: "wdth" 150, "wght" 900; }
+.dl-btn .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; color: #ffffffd0; }
+.dl-btn::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: linear-gradient(90deg, var(--blue) 0 33.34%, var(--hull) 33.34% 66.67%, var(--red-deep) 66.67% 100%); }
+.dl-btn.soon::after { opacity: .35; }
+.dl-btn[disabled] { cursor: progress; }
+.dl-btn .bar { position: absolute; left: 0; bottom: 0; height: 5px; width: 0; background: var(--hull); transition: width .2s; }
+.dl-msg { margin: 14px 2px 0; min-height: 1.6em; color: #d8d3cb; }
+.dl-msg.err { color: #ff8a8f; }
+.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; counter-reset: s; border-top: 1px solid #ffffff26; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px; padding: 16px 0; border-bottom: 1px solid #ffffff1a; }
+.steps li::before { content: counter(s); font-family: var(--f-kin); font-variation-settings: "wdth" 60, "wght" 300; font-size: 2rem; line-height: 1; color: var(--blue-hot); }
+.steps li:nth-child(2)::before { color: var(--hull); }
+.steps li:nth-child(3)::before { color: var(--red-hot); }
+.steps b { display: block; font-weight: 600; }
+.steps span { color: #b9b3aa; }
+.steps code { font-family: var(--f-mono); font-size: .85em; background: #ffffff12; padding: 1px 6px; border-radius: 3px; color: var(--hull); }
+.dl-side { min-width: 0; }
+.upd { margin: 18px 0 0; padding: 14px 16px 15px; border-left: 3px solid var(--blue-hot); background: #6f90de12; color: #b9b3aa; max-width: 60ch; }
+.upd .mono { display: block; color: var(--blue-hot); margin-bottom: 4px; }
+.upd b { color: var(--hull); font-weight: 600; }
+
+/* ------------------------------------------------ hangar (modeles a venir) */
+.hangar { padding-block: 70px 90px; border-top: 1px solid #ffffff1a; }
+.hangar-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+.hangar-head .kin { font-size: clamp(3rem, 11vw, 8.5rem); }
+.hangar-head .kin span { animation: breathe 3.6s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { font-variation-settings: "wdth" 55, "wght" 250; } 50% { font-variation-settings: "wdth" 150, "wght" 900; } }
+.bays { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.bay { border: 1px solid #ffffff24; border-radius: 4px; padding: 20px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; text-decoration: none; }
+.bay .kin { font-size: clamp(3rem, 6vw, 4.6rem); }
+.bay.on { background: var(--hull); color: var(--navy); border-color: var(--hull); }
+.bay.on:hover .kin { color: var(--red); }
+.bay.off { border-style: dashed; color: #5f5b56; }
+.bay.off .kin { font-variation-settings: "wdth" 50, "wght" 150; color: #3d3a37; }
+.bay .row { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+
+/* ------------------------------------------------ pied */
+footer { position: relative; padding-block: 34px 50px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; color: var(--steel); font-size: .92rem; }
+footer::before { content: ""; position: absolute; left: var(--gutter-l); right: var(--gutter-r); top: 0; height: 2px; background: var(--tri); opacity: .45; }
+footer b { display: block; color: var(--hull); font-weight: 600; margin-bottom: 2px; }
+footer .mono { display: block; margin-bottom: 8px; }
+
+@media (max-width: 860px) {
+  .intro, .download { grid-template-columns: minmax(0, 1fr); }
+  .points, .bays, footer { grid-template-columns: minmax(0, 1fr); }
+  .feature-head { grid-template-columns: minmax(0, 1fr); }
+  .feature-head .reg { text-align: left; }
+  .hero-sub { grid-template-columns: minmax(0, 1fr); }
+  .hero-sub .mono { text-align: left; }
+  .specs dd { font-size: 1.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hangar-head .kin span { animation: none; font-variation-settings: "wdth" 100, "wght" 700; }
+  .dl-btn .kin span { transition: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <span class="brand">LF71DC<span class="flag" aria-hidden="true"></span></span>
+  <nav class="mono" aria-label="Sections">
+    <a href="#jodel">Jodel D112</a>
+    <a href="#telecharger">Télécharger</a>
+    <a href="#hangar">Hangar</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" aria-label="LF71DC">
+    <h1 class="kin" id="heroWord" aria-label="LF71DC"><span aria-hidden="true">L</span><span aria-hidden="true">F</span><span aria-hidden="true" class="d">7</span><span aria-hidden="true" class="d">1</span><span aria-hidden="true">D</span><span aria-hidden="true">C</span></h1>
+    <div class="hero-sub">
+      <p>Des avions pour X-Plane 11, modélisés d'après les vrais appareils, leurs plans et leurs fiches. Premier sorti du hangar : le Jodel D112 F-PIIM.</p>
+      <div class="mono">Hangar n°1<br><b>1 modèle disponible</b><br>X-Plane 11.50 et +</div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <div class="band-track" id="band"><span>JODEL D112 <i>/</i> F-PIIM <i>/</i> N°749 <i>/</i> CONTINENTAL 65 CH <i>/</i> 2300 TR/MIN <i>/</i> VNE 245 KM/H <i>/</i> 57 L 100LL <i>/</i></span><span>JODEL D112 <i>/</i> F-PIIM <i>/</i> N°749 <i>/</i> CONTINENTAL 65 CH <i>/</i> 2300 TR/MIN <i>/</i> VNE 245 KM/H <i>/</i> 57 L 100LL <i>/</i></span></div>
+  </div>
+
+  <section class="hull" id="jodel">
+    <div class="wrap feature">
+      <div class="feature-head">
+        <h2 class="kin" id="bigWord" aria-label="D112"><span aria-hidden="true">D</span><span aria-hidden="true">1</span><span aria-hidden="true">1</span><span aria-hidden="true">2</span></h2>
+        <div class="reg">
+          <span class="status mono">Disponible · v0.9.2</span>
+          <div class="kin" style="margin-top:16px">F-PIIM</div>
+          <span class="mono">Jodel D112 n°749 · Aéro-club du Bassin Minier</span>
+        </div>
+      </div>
+
+      <div class="screen">
+        <video id="film" src="media/jodel_cinematique.mp4" poster="media/nez.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Présentation cinématique du Jodel D112 F-PIIM"></video>
+        <span class="tag mono">Rendu du modèle · 51 s</span>
+      </div>
+
+      <div class="intro">
+        <div>
+          <p class="lead">Le biplace de voyage de Jean Délémontez et Édouard Joly, tel que vole le F-PIIM, restauré en 2020 par les membres de l'Aéro-club du Bassin Minier.</p>
+          <p>Le modèle 3D d'Emmanuel Baranger (helijah) a été converti pour X-Plane 11, puis repris pièce par pièce d'après les photos de l'avion : livrée, cadres de verrière, planche de bord, portes, compte-tours calé sur sa ligne rouge à 2300 tr/min.</p>
+          <p>Le modèle de vol suit les cotes Jodel officielles et la fiche de l'appareil : masses, puissance, consommation et vitesses limites.</p>
+        </div>
+        <dl class="specs" aria-label="Fiche du F-PIIM">
+          <div><dt>Moteur</dt><dd>65 <small>ch · Continental</small></dd></div>
+          <div><dt>Régime maxi</dt><dd>2300 <small>tr/min</small></dd></div>
+          <div><dt>Masse à vide</dt><dd>327 <small>kg</small></dd></div>
+          <div><dt>Masse maxi</dt><dd>530 <small>kg</small></dd></div>
+          <div><dt>Croisière</dt><dd>175 <small>km/h</small></dd></div>
+          <div><dt>VNE</dt><dd>245 <small>km/h</small></dd></div>
+          <div><dt>Carburant</dt><dd>57 <small>L de 100LL</small></dd></div>
+          <div><dt>Consommation</dt><dd>25 <small>L/h</small></dd></div>
+          <div><dt>Envergure</dt><dd>8,16 <small>m</small></dd></div>
+          <div><dt>Surface alaire</dt><dd>12,9 <small>m²</small></dd></div>
+        </dl>
+      </div>
+
+      <div class="points">
+        <article><h3>Livrée F-PIIM en 4K</h3><p>Nez rouge, « 57 », filet et lobes de dérive relevés sur photos. La livrée orange de helijah reste disponible.</p></article>
+        <article><h3>Le cockpit du F-PIIM</h3><p>Planche refaite d'après l'avion, 22 commandes cliquables et démarrage moteur arrêté, batterie coupée.</p></article>
+        <article><h3>Portes à ouverture avant</h3><p>Articulées sur le montant du pare-brise, avec une poignée cliquable dans chaque porte.</p></article>
+        <article><h3>Son selon les portes</h3><p>Moteur étouffé dans la cabine fermée, qui revient fort dès qu'une porte s'ouvre.</p></article>
+        <article><h3>Tout ce qui bouge</h3><p>Gouvernes et tringles d'aileron, roues, aiguilles, sélecteur de magnétos, tirettes Récho, Carbu et Cabine.</p></article>
+        <article><h3>VHF et transpondeur vivants</h3><p>Fréquences et code affichés depuis le simulateur, écrans éteints quand le courant est coupé.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap gallery" aria-label="Galerie">
+    <div class="gallery-head">
+      <h2 class="kin" id="galWord" aria-label="Sous les projecteurs"><span aria-hidden="true">Sous les projecteurs</span></h2>
+      <span class="mono">Glisser pour parcourir · 6 vues</span>
+    </div>
+    <div class="strip" tabindex="0" aria-label="Images du Jodel D112">
+      <figure><img src="media/nez.jpg" alt="Capot rouge du Jodel avec le 57 dans son cercle blanc" loading="lazy"><figcaption class="mono"><b>Capot</b><span>Le « 57 » du F-PIIM</span></figcaption></figure>
+      <figure><img src="media/verriere.jpg" alt="Verrière et habitacle éclairés" loading="lazy"><figcaption class="mono"><b>Verrière</b><span>Cadres et habitacle</span></figcaption></figure>
+      <figure><img src="media/immat.jpg" alt="Immatriculation F-PIIM sur le flanc droit" loading="lazy"><figcaption class="mono"><b>F-PIIM</b><span>Flanc droit</span></figcaption></figure>
+      <figure><img src="media/aile.jpg" alt="Panneau externe rouge de l'aile et aileron" loading="lazy"><figcaption class="mono"><b>Saumon</b><span>Dièdre et aileron</span></figcaption></figure>
+      <figure><img src="media/empennage.jpg" alt="Dérive rouge et blanche aux trois lobes" loading="lazy"><figcaption class="mono"><b>Empennage</b><span>Dérive n°749</span></figcaption></figure>
+      <figure><img src="media/train.jpg" alt="Roue du train principal" loading="lazy"><figcaption class="mono"><b>Train</b><span>Roue principale</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wrap download" id="telecharger" aria-label="Télécharger le Jodel D112">
+    <div>
+      <a class="dl-btn" id="dlBtn" target="_blank" rel="noopener" aria-describedby="dlMsg">
+        <span class="kin" aria-hidden="true" id="dlWord"></span>
+        <span class="meta mono"><span>Jodel D112 F-PIIM</span><span id="dlSize">ZIP · 22,7 Mo</span><span>X-Plane 11</span><span>v0.9.2</span><span>SkunkCrafts Updater</span></span>
+      </a>
+      <p class="dl-msg" id="dlMsg" role="status"></p>
+    </div>
+    <div class="dl-side">
+    <ol class="steps">
+      <li><div><b>Téléchargez le fichier</b><span>Un zip qui contient le dossier <code>Jodel D112</code> et un fichier LISEZMOI.</span></div></li>
+      <li><div><b>Décompressez dans X-Plane</b><span>Copiez le dossier dans <code>X-Plane 11/Aircraft/</code>.</span></div></li>
+      <li><div><b>Choisissez le Jodel au lancement du vol</b><span>Décochez « moteurs en marche » pour démarrer à froid.</span></div></li>
+    </ol>
+    <p class="upd"><span class="mono">Mises à jour</span>Compatible <b>SkunkCrafts Updater</b> : une fois installé, le Jodel apparaît dans l'Updater, qui ne retélécharge que les fichiers modifiés à chaque nouvelle version.</p>
+    </div>
+  </section>
+
+  <section class="wrap hangar" id="hangar" aria-label="Le hangar">
+    <div class="hangar-head">
+      <h2 class="kin" aria-label="Bientôt"><span aria-hidden="true" style="animation-delay:0s">B</span><span aria-hidden="true" style="animation-delay:.12s">i</span><span aria-hidden="true" style="animation-delay:.24s">e</span><span aria-hidden="true" style="animation-delay:.36s">n</span><span aria-hidden="true" style="animation-delay:.48s">t</span><span aria-hidden="true" style="animation-delay:.6s">ô</span><span aria-hidden="true" style="animation-delay:.72s">t</span></h2>
+      <span class="mono" style="color:var(--steel)">D'autres modèles en préparation</span>
+    </div>
+    <div class="bays" id="bays"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div><span class="mono">Modèle final X-Plane</span><b>Dimitri CHEVAILLER</b>LF71DC</div>
+  <div><span class="mono">Modèle 3D d'origine</span><b>Emmanuel Baranger (helijah)</b><a href="http://helijah.free.fr" target="_blank" rel="noopener">helijah.free.fr</a></div>
+  <div><span class="mono">Sons</span><b>Laminar Research</b>Banque FMOD du Cessna 172SP (X-Plane 11)</div>
+</footer>
+
+<script>
+(() => {
+  // lien de telechargement du zip (x-plane.org, Drive, GitHub...) : vide = bouton "bientot"
+  const PKG = { url: "https://drive.google.com/file/d/1CoK72CBq98TjExn0FHLO_fM45ryRBYXA/view?usp=sharing", filename: "Jodel_D112_F-PIIM_XP11_v0.9.2.zip", size: 22779693 };
+  // modeles du hangar : ajouter une entree par nouvel avion
+  const MODELS = [
+    { code: "D112", name: "Jodel D112", reg: "F-PIIM", status: "Disponible", href: "#jodel" },
+    null, null
+  ];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (id) => document.getElementById(id);
+  const fmtMo = (b) => (b / 1e6).toFixed(1).replace(".", ",") + " Mo";
+
+  // ---------------- hangar
+  $("bays").innerHTML = MODELS.map((m, i) => m
+    ? `<a class="bay on" href="${m.href}"><span class="row mono"><span>Baie ${i + 1}</span><span class="status">${m.status}</span></span><span class="kin">${m.code}</span><span class="row mono"><span>${m.name}</span><span>${m.reg}</span></span></a>`
+    : `<div class="bay off"><span class="row mono"><span>Baie ${i + 1}</span><span>Libre</span></span><span class="kin">— — —</span><span class="mono">Prochain modèle en préparation</span></div>`
+  ).join("");
+
+  // ---------------- bouton de telechargement : lettres cinetiques
+  $("dlWord").innerHTML = [..."TÉLÉCHARGER"].map((c) => `<span>${c}</span>`).join("");
+
+  // ---------------- ouverture : lettres qui respirent et s'etirent sous le pointeur
+  const hero = $("heroWord");
+  const letters = [...hero.children];
+  let px = -1e4, py = -1e4, heroVisible = true;
+  addEventListener("pointermove", (e) => { px = e.clientX; py = e.clientY; }, { passive: true });
+  addEventListener("pointerleave", () => { px = py = -1e4; });
+  new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }).observe(hero);
+
+  // ---------------- grand "D112" : s'etire avec le defilement
+  const big = $("bigWord"), gal = $("galWord");
+
+  // ---------------- bande rouge : vitesse et inclinaison suivent le defilement
+  const band = $("band");
+  let off = 0, lastY = scrollY, vel = 0, last = performance.now();
+
+  function frame(now) {
+    const dt = Math.min(64, now - last); last = now;
+    const t = now / 1000;
+    if (heroVisible) {
+      for (let i = 0; i < letters.length; i++) {
+        const r = letters[i].getBoundingClientRect();
+        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        const d = Math.hypot(px - cx, (py - cy) * 1.4);
+        const near = Math.exp(-(d * d) / (2 * Math.pow(Math.max(90, r.height * 0.55), 2)));
+        const idle = 0.5 + 0.5 * Math.sin(t * 1.1 - i * 0.75);
+        const k = Math.max(near, idle * 0.55);
+        letters[i].style.fontVariationSettings = `"wdth" ${(62 + 82 * k).toFixed(1)}, "wght" ${(260 + 640 * k).toFixed(0)}`;
+      }
+    }
+    const y = scrollY; vel += ((y - lastY) / dt - vel) * 0.12; lastY = y;
+    off += (0.06 + Math.abs(vel) * 0.9) * dt * (vel < -0.02 ? -1 : 1);
+    const w = band.scrollWidth / 2;
+    off = ((off % w) + w) % w;
+    band.style.transform = `translate3d(${-off}px,0,0) skewX(${Math.max(-14, Math.min(14, -vel * 6)).toFixed(2)}deg)`;
+    scrollFx();
+    requestAnimationFrame(frame);
+  }
+  function scrollFx() {
+    const vh = innerHeight;
+    const r = big.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.9)));
+    big.style.fontVariationSettings = `"wdth" ${(50 + 100 * p).toFixed(1)}, "wght" ${(200 + 700 * p).toFixed(0)}`;
+    const g = gal.getBoundingClientRect();
+    const q = Math.max(0, Math.min(1, (vh - g.top) / (vh * 0.8)));
+    gal.style.fontVariationSettings = `"wdth" ${(55 + 70 * q).toFixed(1)}, "wght" ${(200 + 520 * q).toFixed(0)}`;
+  }
+  if (!reduce) requestAnimationFrame(frame);
+  else { big.style.fontVariationSettings = '"wdth" 120, "wght" 850'; gal.style.fontVariationSettings = '"wdth" 100, "wght" 600'; }
+
+  // la video ne se lit qu'a l'ecran
+  const film = $("film");
+  if (reduce) { film.removeAttribute("autoplay"); film.pause(); film.controls = true; }
+  else new IntersectionObserver(([e]) => { e.isIntersecting ? film.play().catch(() => {}) : film.pause(); }, { threshold: 0.25 }).observe(film);
+
+  // ---------------- telechargement : lien vers l'hebergement du zip
+  const btn = $("dlBtn"), msg = $("dlMsg");
+  $("dlSize").textContent = "ZIP · " + fmtMo(PKG.size);
+  if (PKG.url) {
+    btn.href = PKG.url;
+    msg.textContent = PKG.filename + " · s'ouvre dans un nouvel onglet";
+  } else {
+    btn.classList.add("soon");
+    btn.setAttribute("aria-disabled", "true");
+    btn.removeAttribute("target");
+    btn.querySelector(".meta").insertAdjacentHTML("afterbegin", "<span>Bientôt en ligne</span>");
+    msg.textContent = "Le fichier est prêt : le lien de téléchargement arrive très bientôt.";
+  }
+})();
+</script>
+
+</body>
+</html>
